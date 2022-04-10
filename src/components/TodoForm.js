@@ -7,7 +7,7 @@ const initialFormValues = {
 }
 
 
-const TodoForm = ({ todoAdd,todoEdit ,todoUpdate}) => {
+const TodoForm = ({ todoAdd,todoEdit ,todoUpdate,setTodoEdit}) => {
 
 
     const [formValues, setFormValues] = useState(initialFormValues);
@@ -74,6 +74,17 @@ const TodoForm = ({ todoAdd,todoEdit ,todoUpdate}) => {
 
         <div>
             <h2 className='text-center dispplay-5'>{todoEdit ? 'Editar tarea':'Nueva tarea'}</h2>
+
+            {
+                todoEdit && (
+                <button 
+                    onClick={() => setTodoEdit(null)}
+                    className='btn btn-sm btn-warning mb-2'>
+                    Cancelar edición
+                </button>
+                )
+            }
+            
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
